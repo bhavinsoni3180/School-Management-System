@@ -1,0 +1,162 @@
+		{% block title %}<title>Login Page</title>{% endblock %}
+
+		{% block stylesheets %}
+		<!-- Stylesheet for header -->
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/header/header1.css')}}" />	
+		<!-- Bootstrap 3.3.7 -->
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/bootstrap/dist/css/bootstrap.min.css')}}" />
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/bootstrap/dist/css/bootstrap.css')}}" />
+
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/bootstrap/less/normalize.less')}}" />
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/font/font-awesome/css/font-awesome.min.css')}}" />
+		<!-- Ionicons -->
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/image/Ionicons/css/ionicons.min.css')}}" />
+		<!-- AdminLTE Skins. Choose a skin from the css/skins
+		folder instead of downloading all of them to reduce the load. -->
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/skins/skin-blue.min.css')}}" />
+		<!-- Theme style -->
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/AdminFile/AdminLTE.css')}}" />
+		
+		<link rel="stylesheet" href="{{asset('bundle/admin/loginbundle/css/square/blue.css')}}" />
+		{% endblock %}    	
+
+        {% block body %} 
+		
+		<body class="hold-transition login-page" style="background: #d2d6de;">
+			<!-- forget password pop pop is start -->
+			<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade"><!-- it has id for call the pop pop -->
+				<div class="modal-dialog">
+					<form method='post' action='javascript:void(0)' id='reset-password-form' name='reset-password-form'>
+						<div class="modal-content">
+							<div class="modal-header"> <!-- forgot password header is start -->
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title">Forgot Password ?</h4>
+							</div>
+							<div class="alert alert-success fade in success-msg contract" style="display:none;"> <!-- get sucess msg on right email -->
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<strong>Success!</strong> Request Send Successfully!
+							</div>
+							<div class="alert alert-danger fade in error-msg contract" id="emailpop1" style="display:none;"> <!-- get sucess msg on right email -->
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<strong>Error!</strong> Enter valid E-mail!
+							</div>
+							<div class="alert alert-danger fade in contract" id="emailpop" style="display:none;"> <!-- get sucess msg on right email -->
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								<strong>Error!</strong> Enter valid E-mail like @ and .com!
+							</div>
+							<div class="modal-body"> <!-- forget password body part start input email -->
+								<p>Enter your e-mail address below to reset your password.</p>
+								<input type="text" name="email" placeholder="Email" autocomplete="off" id="forgotpopemail" class="form-control placeholder-no-fix" style="border-color:regular;" required>
+							</div>
+							<div class="modal-footer"> <!-- forget password footer start with button -->
+								<button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+								<button class="btn btn-success"  type="submit">Submit</button>
+								<div class="loader reply-loader" style=" margin: 0 auto; text-align: center;  width: 100%; display:none;"><img src="{{asset('bundle/admin/loginbundle/image/ajax-loader.gif')}}" id="aj_loader"/></div>            
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- forget password pop pop end  -->
+			<div class="login-box">
+				<!-- /.login-logo -->
+					
+				<div class="login-box-body">	<!-- sign in text on top of box -->
+					<div class="login-logo">
+						<label><b>Sign in</b> Now</label>
+					</div>
+					
+					<form action="{{path('admin_login')}}" method="post"> <!-- form was start from there -->
+					<!-- error message-box -->
+					{% if error is defined and error is not empty%}
+						<div name="error" id="error" class="alert alert-block alert-danger fade in login-error" style="display:block;">
+							
+						{{error}}
+						</div>
+					{% endif %}
+						<h4>User Name :</h4> <!-- email input text and input box under text  -->
+						<div class="form-group has-feedback">
+							<input id="emaildata" name="email" type="email" class="form-control" placeholder="User Name" autocomplete = "off" required >
+							<span class="glyphicon glyphicon-user form-control-feedback"></span>
+						</div>
+						<h4>Password :</h4> <!-- password input text and input box under text -->
+						<div class="form-group has-feedback">
+							
+							<input name="password" type="password" class="form-control" placeholder="Password" autocomplete = "off" required>
+							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+						</div>
+						<div class="text-right">
+							<a class="forgotlogin" data-toggle="modal" href="#myModal">Forgot Password?</a><br><br> <!-- forget password link -->
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<button type="submit" class="btn btn-primary btn-block btn-flat" onclick="emailval()">Sign In</button>  <!-- button for submit in form of login -->
+							</div>
+						</div>	
+					</form> <!-- form is complet -->
+				</div>
+				
+			</div>
+			<script src="{{asset('bundle/admin/loginbundle/js/jquery/dist/jquery.js')}}"></script><!-- js query file path for msg pop pop -->
+        <script src="{{asset('bundle/admin/loginbundle/css/bootstrap/dist/js/bootstrap.min.js')}}"></script><!-- js bootstrap file path for pop pop  -->
+        <script>
+
+            $("#reset-password-form").submit(function (e) {
+                e.preventDefault();
+                $('.reply-loader').css("display", "block"); // it is block the loding gif img
+                var formSerialize = $('#reset-password-form').serializeArray();
+                var url = '{{path('admin_forgot_password')}}'; // it is path which is go in default controller
+				var a2=document.getElementById("forgotpopemail").value;
+				var atpos = a2.indexOf("@");
+				var dotpos = a2.lastIndexOf(".");
+				if (atpos<1 || dotpos<atpos+2 || dotpos+2>=a2.length)
+				{
+					$('#emailpop').css("display", "block");
+					$('.reply-loader').css("display", "none");
+					$('#forgotpopemail').css("border-color","#ff0000");
+					$('#emailpop1').css("display", "none");
+				}else
+				{
+					$.ajax({
+						url: url, // take the url of forgot pass.
+						type: "POST",
+						data: formSerialize,
+						success: function (data) {
+							obj = JSON.parse(data);
+							if (obj.success == true) {
+								$('#forgotpopemail').css("border-color","#0000ffff");
+								setTimeout(function () {
+									$('#reset-password-form')[0].reset(); // it was reset the form 
+									$('.success-msg').css("display", "block");  // it was hide sucess msg
+									$('#emailpop1').css("display", "none");
+									$('#emailpop').css("display", "none");
+									// it is hide the pop pop of forgot pass which has id mymodal
+									$('.reply-loader').css("display", "none");
+								}, 3000);
+								setTimeout(function(){
+									$('#myModal').modal("hide");
+									$('.success-msg').css("display", "none");
+								},6000);
+							}
+							if(obj.success == false){
+									$('#forgotpopemail').css("border-color","#ff0000");
+									$('#reset-password-form')[0].reset(); // it was reset the form 
+
+									$('#emailpop1').css("display", "block"); // it was hide sucess msg
+									$('.success-msg').css("display", "none");
+									// it is hide the pop pop of forgot pass which has id mymodal
+									$('.reply-loader').css("display", "none");
+									$('#emailpop').css("display", "none");
+								}
+						}
+					});
+				}	
+            });
+        </script>
+			
+		</body> <!-- end of login form and login box body -->
+		
+		{% endblock %}
+        {% block javascripts %}
+		{% endblock %}

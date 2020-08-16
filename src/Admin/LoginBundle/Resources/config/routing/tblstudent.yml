@@ -1,0 +1,34 @@
+tblstudent_index:
+    path:     /
+    defaults: { _controller: "AdminLoginBundle:TblStudent:index" }
+    methods:  GET
+
+tblstudent_show:
+    path:     /{bistudentid}/show
+    defaults: { _controller: "AdminLoginBundle:TblStudent:show" }
+    methods:  GET
+
+tblstudent_new:
+    path:     /new
+    defaults: { _controller: "AdminLoginBundle:TblStudent:new" }
+    methods:  [GET, POST]
+
+tblstudent_edit:
+    path:     /{bistudentid}/edit
+    defaults: { _controller: "AdminLoginBundle:TblStudent:edit" }
+    methods:  [GET, POST]
+
+tblstudent_edituser:
+    path:     /edituser
+    defaults: { _controller: "AdminLoginBundle:TblStudent:edituser" }
+    methods:  [GET, POST]
+
+tblstudent_delete:
+    path:     /{bistudentid}/delete
+    defaults: { _controller: "AdminLoginBundle:TblStudent:delete" }
+    methods:  [GET, POST]
+
+tblstudent_save_new_student:
+    path:     /save-new-student
+    defaults: { _controller: "AdminLoginBundle:TblStudent:saveNewStudent" }
+    methods:  [GET, POST]

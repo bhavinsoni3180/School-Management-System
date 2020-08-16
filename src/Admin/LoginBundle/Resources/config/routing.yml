@@ -1,0 +1,59 @@
+admin_login_tblteacher:
+    resource: "@AdminLoginBundle/Resources/config/routing/tblteacher.yml"
+    prefix:   /tblteacher
+
+admin_login_homepage:
+    path:     /
+    defaults: { _controller: AdminLoginBundle:Default:index}
+    
+admin_login: 
+    path:     /logins
+    defaults: { _controller: AdminLoginBundle:Default:login }
+    
+admin_dashboard: 
+    path:     /dashboard
+    defaults: { _controller: AdminLoginBundle:Default:dashboard }
+
+admin_logout: 
+    path:     /logout
+    defaults: { _controller: AdminLoginBundle:Default:logout } 
+    
+admin_forgot_password:
+    path:     /forgot-password
+    defaults: { _controller: AdminLoginBundle:Default:forgotPassword }
+
+admin_reset_password:
+    path:     /reset-password/{flag}
+    defaults: { _controller: AdminLoginBundle:Default:reSetPassword }
+
+admin_teacher:
+    path:     /teacher
+    defaults: { _controller: AdminLoginBundle:Teacher:teacherList }
+
+admin_student:
+    path:     /student
+    defaults: { _controller: AdminLoginBundle:Student:studentList }
+
+admin_login_tblstudent:
+    resource: "@AdminLoginBundle/Resources/config/routing/tblstudent.yml"
+    prefix: /tblstudent
+
+admin_login_tblparent:
+    resource: "@AdminLoginBundle/Resources/config/routing/tblparent.yml"
+    prefix: /tblparent
+
+admin_parents:
+    path:     /parents
+    defaults: { _controller: AdminLoginBundle:Parents:parentsList }
+
+admin_principal:
+    path:     /principal
+    defaults: { _controller: AdminLoginBundle:OtherUser:principalList }
+
+admin_itdepartment:
+    path:     /itdepartment
+    defaults: { _controller: AdminLoginBundle:OtherUser:itDepartmentList }
+
+admin_profile:
+    path:     /Profile
+    defaults: { _controller: AdminLoginBundle:Profile:profile}

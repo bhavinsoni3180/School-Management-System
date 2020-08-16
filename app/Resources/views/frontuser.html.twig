@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome User!{% endblock %}</title>
+        {% block stylesheets %}
+        <!-- Bootstrap 3.3.7 -->
+            <link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/bootstrap/dist/css/bootstrap.min.css')}}" />
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/bootstrap/dist/css/bootstrap.css')}}" />
+            <link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/bootstrap/less/normalize.less')}}" />
+        <!-- Stylesheet for header --> 
+            <link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/header/header.css')}}" />
+        <!-- Font Awesome -->
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/font/font-awesome/css/font-awesome.min.css')}}" />
+        <!-- Ionicons -->
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/Ionicons/ionicons.min.css')}}" />  
+        <!-- AdminLTE Skins. Choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/skins/skin-blue.min.css')}}" /> 
+        <!-- Theme style -->
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/userfile/AdminLTE.css')}}" />
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/userfile/AdminLTE.min.css')}}" />
+			<link rel="stylesheet" href="{{asset('bundle/front/userloginbundle/css/square/blue.css')}}" />         
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundle/front/userloginbundle/img/title_logo.png') }}" />
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        
+            {% include 'FrontUserBundle:Default:header.html.twig' %}
+            {% include 'FrontUserBundle:Default:sidebar.html.twig' %}
+            {% include 'FrontUserBundle:Default:settingbar.html.twig' %}
+            {% block body %}{% endblock %}
+            {% include 'FrontUserBundle:Default:footer.html.twig' %}
+
+
+     <script src="{{asset('bundle/front/userloginbundle/js/jquery/dist/jquery.min.js')}}"></script>   
+     <script src="{{asset('bundle/front/userloginbundle/js/dist/js/adminlte.min.js')}}"></script>
+     <script src="{{asset('bundle/front/userloginbundle/css/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+     {% block javascripts %}{% endblock %}  
+    </body>
+</html>
+ 
+ 

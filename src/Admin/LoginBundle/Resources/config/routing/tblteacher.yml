@@ -1,0 +1,34 @@
+tblteacher_index:
+    path:     /
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:index" }
+    methods:  GET
+
+tblteacher_show:
+    path:     /{biteacherid}/show
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:show" }
+    methods:  GET
+
+tblteacher_new:
+    path:     /new
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:new" }
+    methods:  [GET, POST]
+
+tblteacher_edit:
+    path:     /{biteacherid}/edit
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:edit" }
+    methods:  [GET, POST]
+
+tblteacher_edituser:
+    path:     /edituser
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:edituser" }
+    methods:  [GET, POST]
+
+tblteacher_delete:
+    path:     /{biteacherid}/delete
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:delete" }
+    methods:  [GET, POST]
+
+tblteacher_save_new_teacher:
+    path:     /save-new-teacher
+    defaults: { _controller: "AdminLoginBundle:TblTeacher:saveNewTeacher" }
+    methods:  [GET, POST]

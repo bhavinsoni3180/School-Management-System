@@ -1,0 +1,35 @@
+tblparent_index:
+    path:     /
+    defaults: { _controller: "AdminLoginBundle:TblParent:index" }
+    methods:  GET
+
+tblparent_show:
+    path:     /{biperentid}/show
+    defaults: { _controller: "AdminLoginBundle:TblParent:show" }
+    methods:  GET
+
+tblparent_new:
+    path:     /new
+    defaults: { _controller: "AdminLoginBundle:TblParent:new" }
+    methods:  [GET, POST]
+
+tblparent_edit:
+    path:     /{biperentid}/edit
+    defaults: { _controller: "AdminLoginBundle:TblParent:edit" }
+    methods:  [GET, POST]
+
+tblparent_edituser:
+    path:     /edituser
+    defaults: { _controller: "AdminLoginBundle:TblParent:edituser" }
+    methods:  [GET, POST]
+
+
+tblparent_delete:
+    path:     /{biperentid}/delete
+    defaults: { _controller: "AdminLoginBundle:TblParent:delete" }
+    methods:  [GET, POST]
+
+tblstudent_save_new_parent:
+    path:     /save-new-student
+    defaults: { _controller: "AdminLoginBundle:TblParent:saveNewParent" }
+    methods:  [GET, POST]

@@ -1,0 +1,56 @@
+body
+{
+	margin: 0;
+}
+
+.login-logo
+{
+	border-bottom:solid 1px #1a0000;
+	margin:0px 30px;
+}
+
+.resetpassfont
+{
+    font-size: 28px;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+.text-right a
+{
+	color:#1a0000;
+	text-decoration: none;
+}
+
+.text-right a:hover
+{
+	color:#1a0000;
+	text-decoration: none;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.forgotlogin:hover
+{
+	color:#1a0000;
+}
+
+.forgotlogin
+{
+	color:#1a0000;
+}
